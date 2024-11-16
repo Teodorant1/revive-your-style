@@ -19,6 +19,13 @@ import { type AdapterAccount } from "next-auth/adapters";
 export const createTable = pgTableCreator(
   (name) => `revive-your-style_${name}`,
 );
+export const jobRuns = createTable("job_runs", {
+  runDate: timestamp("runDate", { withTimezone: true }).primaryKey().notNull(),
+});
+
+export type jobRuns_type = typeof jobRuns.$inferSelect;
+export type article_type = typeof article.$inferSelect;
+
 export const article = createTable("article", {
   id: varchar("id", { length: 255 })
     .notNull()

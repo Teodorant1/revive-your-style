@@ -1,6 +1,6 @@
 {
-  "id": "ec050673-ff06-49ba-b6b2-428f54eca4fb",
-  "prevId": "f757cb72-a25f-4caf-8e2a-8b37fddb7f43",
+  "id": "b661491d-045a-4b8f-9b8d-b40d7dd8886c",
+  "prevId": "178b703c-02e2-409e-a1b5-21d2456f9621",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -118,6 +118,82 @@
       },
       "uniqueConstraints": {}
     },
+    "public.revive-your-style_article": {
+      "name": "revive-your-style_article",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(255)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "category": {
+          "name": "category",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "subcategory": {
+          "name": "subcategory",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tags": {
+          "name": "tags",
+          "type": "varchar(1000)[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'::text[]"
+        },
+        "email_verified": {
+          "name": "email_verified",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "image": {
+          "name": "image",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.revive-your-style_job_runs": {
+      "name": "revive-your-style_job_runs",
+      "schema": "",
+      "columns": {
+        "runDate": {
+          "name": "runDate",
+          "type": "timestamp with time zone",
+          "primaryKey": true,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "public.revive-your-style_post": {
       "name": "revive-your-style_post",
       "schema": "",
@@ -215,69 +291,44 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.revive-your-style_post2": {
-      "name": "revive-your-style_post2",
+    "public.revive-your-style_revival_user": {
+      "name": "revive-your-style_revival_user",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "varchar(255)",
           "primaryKey": true,
-          "notNull": true,
-          "identity": {
-            "type": "byDefault",
-            "name": "revive-your-style_post2_id_seq",
-            "schema": "public",
-            "increment": "1",
-            "startWith": "1",
-            "minValue": "1",
-            "maxValue": "2147483647",
-            "cache": "1",
-            "cycle": false
-          }
+          "notNull": true
         },
         "name": {
           "name": "name",
-          "type": "varchar(256)",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false
         },
-        "created_by": {
-          "name": "created_by",
+        "email": {
+          "name": "email",
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true
         },
-        "created_at": {
-          "name": "created_at",
+        "email_verified": {
+          "name": "email_verified",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "CURRENT_TIMESTAMP"
         },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp with time zone",
+        "image": {
+          "name": "image",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {},
-      "foreignKeys": {
-        "revive-your-style_post2_created_by_revive-your-style_user_id_fk": {
-          "name": "revive-your-style_post2_created_by_revive-your-style_user_id_fk",
-          "tableFrom": "revive-your-style_post2",
-          "tableTo": "revive-your-style_user",
-          "columnsFrom": [
-            "created_by"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
